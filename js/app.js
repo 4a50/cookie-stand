@@ -57,10 +57,10 @@ var generateStoreHourArray = function (startTime = 6, hoursOpen = 14) {
 function generateTableBones(baseParentTag) {
   var baseParent = document.getElementsByTagName(baseParentTag);
   var tableTag = document.createElement('table');
-  tableTag.setAttribute('id', `store-table`);
+  tableTag.setAttribute('id', 'store-table');
   baseParent[0].appendChild(tableTag);
   var tBodyTag = document.createElement('tBody');
-  tBodyTag.setAttribute('id', `store-table-body`);
+  tBodyTag.setAttribute('id', 'store-table-body');
   tableTag.appendChild(tBodyTag);
 }
 function render(storeObjs) {
@@ -130,12 +130,14 @@ function render(storeObjs) {
 
 
 //Code
+// When pushing the object instances into an array in the constructor, you do not
+//need to assign a variable.
 var allStores = [];
-var seattle = new Store('Seattle', 23, 65, 6.3);
-var tokyo = new Store('Tokyo', 3, 24, 1.2); //loc, min, max, avg
-var dubai = new Store('Dubai', 11, 38, 3.7);
-var paris = new Store('Paris', 20, 38, 2.3);
-var lima = new Store('Lima', 2, 16, 4.6);
+new Store('Seattle', 23, 65, 6.3);
+new Store('Tokyo', 3, 24, 1.2); //loc, min, max, avg
+new Store('Dubai', 11, 38, 3.7);
+new Store('Paris', 20, 38, 2.3);
+new Store('Lima', 2, 16, 4.6);
 var baseParentTag = 'main';
 
 
