@@ -1,16 +1,19 @@
-
-#store-table-body {
-  border: 12px, solid, purple;
-}
 tr {
-  border: 2px, solid, purple;
+  
   color:purple;
   background: peachpuff;
   text-align: center;
   box-sizing: border-box;
 }
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 5px solid indianred;
 
+
+}
 h2{
-  border: 10px, solid, purple;
+  border: 3px, solid, purple;
   color:purple;
 }
