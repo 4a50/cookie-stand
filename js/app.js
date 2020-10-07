@@ -25,7 +25,6 @@ Store.prototype.generateHourlyCookies = function () { //pushes out my array of h
     this.hourlyCookies.push(hourlySale);
     this.dailyLocationTotal += hourlySale;
   }
-
 }
 
 //Functions
