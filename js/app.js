@@ -1,10 +1,10 @@
 'use-strict';
 
 // Global Vars
-var totalCookiesSold = 0;
+
 //Objects
 function Store(storeLoc, minCust, maxCust, avgCookie) {
-  //vars
+  //funcVars
   this.storeLocation = storeLoc;
   this.idName = this.storeLocation.toLowerCase();
 
@@ -25,17 +25,17 @@ Store.prototype.generateHourlyCookies = function () { //pushes out my array of h
     this.hourlyCookies.push(hourlySale);
     this.dailyLocationTotal += hourlySale;
   }
-}
+};
 
 //Functions
-getRandomNumber = function (min, max) {
+var getRandomNumber = function (min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   var rando = Math.floor(Math.random() * (max - min) + min);
   return rando;
-}
+};
 
-generateStoreHourArray = function (startTime = 6, hoursOpen = 14) {
+var generateStoreHourArray = function (startTime = 6, hoursOpen = 14) {
   var storeTimes = ['Store'];
 
   for (var q = startTime; q < hoursOpen + startTime; q++) {
@@ -52,7 +52,7 @@ generateStoreHourArray = function (startTime = 6, hoursOpen = 14) {
   }
   storeTimes.push('Daily Location Total');
   return storeTimes;
-}
+};
 
 function generateTableBones(baseParentTag) {
   var baseParent = document.getElementsByTagName(baseParentTag);
@@ -64,18 +64,17 @@ function generateTableBones(baseParentTag) {
   tableTag.appendChild(tBodyTag);
 }
 function render(storeObjs) {
-  ///////////
   var storeTimes = generateStoreHourArray();
   var trParent = document.getElementById('store-table-body');
-
+  var childToAppend;
   var parentHeader = document.createElement('tr');
   parentHeader.setAttribute('id', 'header-row');
   trParent.appendChild(parentHeader);
 
-  for (var i = 0; i < storeTimes.length; i++) {
+  for (var m = 0; m < storeTimes.length; m++) {
     //Headers
     childToAppend = document.createElement('th');
-    childToAppend.textContent = storeTimes[i]
+    childToAppend.textContent = storeTimes[m];
     parentHeader.appendChild(childToAppend);
   }
   var storeTr;
@@ -83,16 +82,15 @@ function render(storeObjs) {
   for (var i = 0; i < storeObjs.length; i++) { ///Iterate through stores
 
     storeTr = document.createElement('tr');
-    storeTr.setAttribute('id', `${storeObjs[i].idName}-tr`)
+    storeTr.setAttribute('id', `${storeObjs[i].idName}-tr`);
     trParent.appendChild(storeTr);
 
-    var storeNameHeader = document.createElement('th')
+    var storeNameHeader = document.createElement('th');
     storeNameHeader.textContent = `${storeObjs[i].storeLocation}`;
     storeTr.appendChild(storeNameHeader);
 
     for (var j = 0; j < storeObjs[i].hourlyCookies.length; j++) { //populate hourly cookies
       storeTd = document.createElement('td');
-      // console.log(storeObjs[i].hourlyCookies[j]);
       storeTd.textContent = storeObjs[i].hourlyCookies[j];
       document.getElementById(`${storeObjs[i].idName}-tr`).appendChild(storeTd);
     }
@@ -110,10 +108,10 @@ function render(storeObjs) {
   var hourlyRunningTotal = 0;
   var grandHourlyRunningTotal = 0;
 
-  for (var j = 0; j < storeObjs[0].hourlyCookies.length; j++) {
-    for (var i = 0; i < storeObjs.length; i++) {
+  for (var l = 0; l < storeObjs[0].hourlyCookies.length; l++) {
+    for (var k = 0; k < storeObjs.length; k++) {
       // console.log(`${j}: ${storeObjs[i].hourlyCookies[j]}`);
-      hourlyRunningTotal += storeObjs[i].hourlyCookies[j];
+      hourlyRunningTotal += storeObjs[k].hourlyCookies[l];
     }
 
     hourlyTD = document.createElement('td');
@@ -142,7 +140,7 @@ var baseParentTag = 'main';
 
 
 
-generateTableBones('main', seattle.idName);
+generateTableBones(baseParentTag);//, seattle.idName);
 render(allStores);
 
 
