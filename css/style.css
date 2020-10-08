@@ -2,6 +2,9 @@ body {
   background-color: #ff91a4;
   width: 1200px;
 }
+img {
+  border: 3px solid  #721817;
+}
 h1{
   font-size: 72px;
   color: #721817;
@@ -11,6 +14,9 @@ h2{
   color:#721817;
   text-align: center;
   padding: 15px 0px;
+  border: 2px solid #721817;
+  
+  background-color:#B5A886;  
 }
 h3{
   font-size: 48px;
@@ -23,11 +29,12 @@ h3{
 
 header img{  
   float: left;
-  padding: 10px;  
+  margin: 10px;  
 }
 header h1 {
-  display: inline-block;
-  padding: 65px 10px 65px 60px;
+  display: inline-block;  
+  padding: 60px 120px;
+  
 }
 /* Quick Bar */
 #quick-bar{  
@@ -56,6 +63,7 @@ header h1 {
 #quick-bar img{
   width: 400px;
   padding: 0px 65px;
+  border: none;
 }
 
 #store-hours{
@@ -106,8 +114,8 @@ text-align: center;
 
 #meetpat img{
   float:left;
-  padding-left: 10px;
-  border: 2px solid#721817;
+  padding-left: 8px;
+  /* border: 2px solid#721817; */
 }
 
 #meetpat p{
@@ -120,7 +128,7 @@ text-align: center;
   width: 300px;
 }
 #merchsection h2{
-  padding: 10px 0px;
+  margin: 10px 0px;
 }
 #merchsection p {
  
@@ -132,12 +140,21 @@ text-align: center;
 }
 #merchsection img {
   float: right;
-  padding: 0px 21px;  
+  margin: 0px 21px;  
 }
 #themerch p {
   padding: 20px;
   font-size: 24px;
 }
+#themerch h2 {
+  margin: 20px;
+}
 #middleimg{
-  padding: 20px 34px 0px 34px;
+  margin: 20px 30px 0px 30px;
+}
+footer h3{
+  background-color: #721817;
+  text-align: center;
+  color: #ff91a4;
+    
 }

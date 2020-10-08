@@ -1,0 +1,13 @@
+Table Data Format 
+ tr {  
+  color:purple;
+  background: peachpuff;
+  text-align: center;
+  box-sizing: border-box;
+}
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 5px solid indianred;
+}
