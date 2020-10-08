@@ -1,5 +1,22 @@
-tr {
-  
+* {
+  background-color: #ff91a4;
+}
+h1{
+  font-size: 72px;
+  color: #721817;
+}
+h2{
+  border: 64px, solid, purple;
+  color:#721817;
+}
+h3{
+  font-size: 48px;
+  color: #721817;
+}
+
+
+/* Table Data Format */
+tr {  
   color:purple;
   background: peachpuff;
   text-align: center;
@@ -10,10 +27,33 @@ table {
 }
 table, th, td {
   border: 5px solid indianred;
-
-
 }
-h2{
-  border: 3px, solid, purple;
-  color:purple;
+
+header img{  
+  float: left;
+  padding: 10px;
+}
+header h1 {
+  display: inline-block;
+  padding: 65px 10px 65px 10px;
+}
+#quick-bar{  
+  margin: 10px;
+  border: 2px solid purple;
+}
+#quick-bar img{
+  display: inline-block;
+  width: 400px;
+}
+#contact-info ul{
+  display: inline-block;
+  width: 300px;
+  padding: 20px;
+  border: 2px solid black;
+}
+#store-hours .sh-txt{
+  display: inline-block;
+  border: 2px solid black;
+
+  width: 100px;
 }
