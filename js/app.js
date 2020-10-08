@@ -110,24 +110,19 @@ function render(storeObjs) {
 
   for (var l = 0; l < storeObjs[0].hourlyCookies.length; l++) {
     for (var k = 0; k < storeObjs.length; k++) {
-      // console.log(`${j}: ${storeObjs[i].hourlyCookies[j]}`);
       hourlyRunningTotal += storeObjs[k].hourlyCookies[l];
     }
-
     hourlyTD = document.createElement('td');
     hourlyTD.textContent = hourlyRunningTotal;
     document.getElementById('hourly-total-row').appendChild(hourlyTD);
-    console.log(hourlyRunningTotal);
+    //console.log(hourlyRunningTotal);
     grandHourlyRunningTotal += hourlyRunningTotal;
     hourlyRunningTotal = 0;
   }
   var grandTotalTD = document.createElement('td');
   grandTotalTD.textContent = grandHourlyRunningTotal;
   document.getElementById('hourly-total-row').appendChild(grandTotalTD);
-
 }
-
-
 
 //Code
 // When pushing the object instances into an array in the constructor, you do not
@@ -139,8 +134,6 @@ new Store('Dubai', 11, 38, 3.7);
 new Store('Paris', 20, 38, 2.3);
 new Store('Lima', 2, 16, 4.6);
 var baseParentTag = 'main';
-
-
 
 generateTableBones(baseParentTag);//, seattle.idName);
 render(allStores);
