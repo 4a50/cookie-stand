@@ -1,8 +1,8 @@
 'use-strict';
+var allStores = [];
+var addStoreLoc = document.getElementById('addStoreLoc');
+var baseParentTag = 'main';
 
-// Global Vars
-
-//Objects
 function Store(storeLoc, minCust, maxCust, avgCookie) {
   //funcVars
   this.storeLocation = storeLoc;
@@ -17,7 +17,7 @@ function Store(storeLoc, minCust, maxCust, avgCookie) {
 
   allStores.push(this);
 }
-//Prototypes
+
 Store.prototype.generateHourlyCookies = function () { //pushes out my array of hourly cookies
   var hourlySale = 0;
   for (var i = 0; i < 14; i++) { //removed HoursOPen variable  //TODO FIX 14
@@ -27,7 +27,7 @@ Store.prototype.generateHourlyCookies = function () { //pushes out my array of h
   }
 };
 
-//Functions
+
 var getRandomNumber = function (min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -63,25 +63,28 @@ function generateTableBones(baseParentTag) {
   tBodyTag.setAttribute('id', 'store-table-body');
   tableTag.appendChild(tBodyTag);
 }
-function render(storeObjs) {
-  var storeTimes = generateStoreHourArray();
-  var trParent = document.getElementById('store-table-body');
-  var childToAppend;
+function generateHourlyTableHeader(parentToAttachID) //Need to attach to 
+{
+  var parentToAttach = document.getElementById(parentToAttachID);
   var parentHeader = document.createElement('tr');
-  parentHeader.setAttribute('id', 'header-row');
-  trParent.appendChild(parentHeader);
-
+  var storeTimes = generateStoreHourArray();
+  var childToAppend;
   for (var m = 0; m < storeTimes.length; m++) {
     //Headers
     childToAppend = document.createElement('th');
     childToAppend.textContent = storeTimes[m];
     parentHeader.appendChild(childToAppend);
   }
+  parentHeader.setAttribute('id', 'header-row');
+  parentToAttach.appendChild(parentHeader);
+}
+function generateHourlyStoreDataAll(parentToAttachID, storeObjs) {
   var storeTr;
   var storeTd;
-  for (var i = 0; i < storeObjs.length; i++) { ///Iterate through stores
+  var trParent = document.getElementById(parentToAttachID);
 
-    storeTr = document.createElement('tr');
+  for (var i = 0; i < storeObjs.length; i++) { ///Iterate through stores
+    storeTr = document.createElement('tr');  //Creates the Row Element and appends to parent (store-table-body)
     storeTr.setAttribute('id', `${storeObjs[i].idName}-tr`);
     trParent.appendChild(storeTr);
 
@@ -98,6 +101,9 @@ function render(storeObjs) {
     storeTd.textContent = storeObjs[i].dailyLocationTotal;
     document.getElementById(`${storeObjs[i].idName}-tr`).appendChild(storeTd);
   }
+}
+function generateSumHourlySales(parentToAttachID, storeObjs) {
+  var trParent = document.getElementById(parentToAttachID);
   var hourlyCookieTotals = document.createElement('tr');
   hourlyCookieTotals.setAttribute('id', 'hourly-total-row');
   trParent.appendChild(hourlyCookieTotals);
@@ -123,29 +129,33 @@ function render(storeObjs) {
   grandTotalTD.textContent = grandHourlyRunningTotal;
   document.getElementById('hourly-total-row').appendChild(grandTotalTD);
 }
+function render(storeObjs) {
 
-//Code
-// When pushing the object instances into an array in the constructor, you do not
-//need to assign a variable.
-var allStores = [];
+  generateHourlyTableHeader('store-table-body');
+  generateHourlyStoreDataAll('store-table-body', storeObjs);
+  generateSumHourlySales('store-table-body', storeObjs);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  var locName = (event.target.storelocation.value);
+  var avgHourSales = (event.target.avgCookiesSales.value);
+  var minCust = (event.target.minCustomer.value);
+  var maxCust = (event.target.maxCustomer.value);
+  document.getElementById('store-table-body').innerHTML = '';
+  new Store(locName, minCust, maxCust, avgHourSales);
+  render(allStores);
+
+}
+
 new Store('Seattle', 23, 65, 6.3);
 new Store('Tokyo', 3, 24, 1.2); //loc, min, max, avg
 new Store('Dubai', 11, 38, 3.7);
 new Store('Paris', 20, 38, 2.3);
 new Store('Lima', 2, 16, 4.6);
-var baseParentTag = 'main';
 
-generateTableBones(baseParentTag);//, seattle.idName);
+console.log(allStores.length, allStores);
+addStoreLoc.addEventListener('submit', handleSubmit);
+
+generateTableBones(baseParentTag);
 render(allStores);
-
-
-
-
-
-
-
-
-
-
-
-
