@@ -1,9 +1,8 @@
 'use-strict';
-
-// Global Vars
 var allStores = [];
 var addStoreLoc = document.getElementById('addStoreLoc');
-//Objects
+var baseParentTag = 'main';
+
 function Store(storeLoc, minCust, maxCust, avgCookie) {
   //funcVars
   this.storeLocation = storeLoc;
@@ -18,7 +17,7 @@ function Store(storeLoc, minCust, maxCust, avgCookie) {
 
   allStores.push(this);
 }
-//Prototypes
+
 Store.prototype.generateHourlyCookies = function () { //pushes out my array of hourly cookies
   var hourlySale = 0;
   for (var i = 0; i < 14; i++) { //removed HoursOPen variable  //TODO FIX 14
@@ -28,7 +27,7 @@ Store.prototype.generateHourlyCookies = function () { //pushes out my array of h
   }
 };
 
-//Functions
+
 var getRandomNumber = function (min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -149,38 +148,14 @@ function handleSubmit(event) {
 
 }
 
-//Code
-// When pushing the object instances into an array in the constructor, you do not
-//need to assign a variable.
-
-
 new Store('Seattle', 23, 65, 6.3);
 new Store('Tokyo', 3, 24, 1.2); //loc, min, max, avg
 new Store('Dubai', 11, 38, 3.7);
 new Store('Paris', 20, 38, 2.3);
 new Store('Lima', 2, 16, 4.6);
 
-var baseParentTag = 'main';
 console.log(allStores.length, allStores);
 addStoreLoc.addEventListener('submit', handleSubmit);
 
 generateTableBones(baseParentTag);
 render(allStores);
-
-
-// var grandPappyArray = grandPappy.childNodes;
-// console.log('grandPapsArray:', grandPappyArray);
-// console.log('grandPappy has this many kids:', grandPappy.childElementCount);
-
-
-// console.log(allStores);
-// var insertedNode = document.createElement('th');
-
-// grandPappy.insertBefore(insertedNode, grandPappyArray[6]);
-// console.log('grandPappy has this many kids:', grandPappy.childElementCount);
-// for (var i = 0; i < grandPappy.childElementCount; i++) {
-//   console.log(grandPappy.childNodes[i]);
-// }
-// location.reload();
-// render(allStores);
-
