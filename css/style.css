@@ -6,8 +6,10 @@ img {
   border: 3px solid  #721817;
 }
 h1{
-  font-size: 72px;
+  font-family: 'Pacifico', cursive;
+  font-size: 94px;
   color: #721817;
+  text-shadow: 9px 7px 5px #a80000;
 }
 h2{
   font-size: 55px;
@@ -22,7 +24,15 @@ h3{
   font-size: 48px;
   color: #721817;
 }
-
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#mainH2{
+  border: red solid 1px ;  
+  
+}
 
 
 
@@ -31,11 +41,7 @@ header img{
   float: left;
   margin: 10px;  
 }
-header h1 {
-  display: inline-block;  
-  padding: 60px 120px;
-  
-}
+
 /* Quick Bar */
 #quick-bar{  
   margin: 10px;
@@ -156,6 +162,5 @@ footer h3{
   background-color: #721817;
   text-align: center;
   color: #ff91a4;
+    
 }
-
-/* Sales.html pa */
